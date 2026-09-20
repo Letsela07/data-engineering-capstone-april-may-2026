@@ -286,3 +286,104 @@ SELECT *
 FROM dw.dim_account
 WHERE account_status = 'Unknown';
 GO
+
+
+/*==============================================================
+  4. LOAD DIM_DATE
+
+  GRAIN:
+  One row per calendar date.
+
+  RANGE:
+  Every calendar date between the earliest and latest event_date
+  across all three staging tables.
+
+  date_key format:
+  YYYYMMDD
+
+  Existing dates are preserved to make the load rerunnable.
+==============================================================*/
+
+DECLARE @min_date DATE;
+DECLARE @max_date DATE;
+
+
+/* Find the earliest and latest event dates */
+SELECT
+    @min_date = MIN(event_date),
+    @max_date = MAX(event_date)
+FROM
+(
+    SELECT event_date
+    FROM staging.product_enrollment
+    WHERE event_date IS NOT NULL
+
+    UNION ALL
+
+    SELECT event_date
+    FROM staging.crm_interaction
+    WHERE event_date IS NOT NULL
+
+    UNION ALL
+
+    SELECT event_date
+    FROM staging.[transaction]
+    WHERE event_date IS NOT NULL
+) AS all_event_dates;
+
+
+/* Generate every calendar date between MIN and MAX */
+;WITH date_range AS
+(
+    SELECT @min_date AS full_date
+
+    UNION ALL
+
+    SELECT DATEADD(DAY, 1, full_date)
+    FROM date_range
+    WHERE full_date < @max_date
+)
+
+INSERT INTO dw.dim_date
+(
+    date_key,
+    full_date,
+    day_number,
+    month_number,
+    month_name,
+    quarter_number,
+    year_number
+)
+SELECT
+    CONVERT(INT, CONVERT(CHAR(8), full_date, 112)) AS date_key,
+    full_date,
+    DAY(full_date) AS day_number,
+    MONTH(full_date) AS month_number,
+    DATENAME(MONTH, full_date) AS month_name,
+    DATEPART(QUARTER, full_date) AS quarter_number,
+    YEAR(full_date) AS year_number
+FROM date_range AS d
+WHERE NOT EXISTS
+(
+    SELECT 1
+    FROM dw.dim_date AS target
+    WHERE target.full_date = d.full_date
+)
+OPTION (MAXRECURSION 0);
+GO
+
+
+/*==============================================================
+  VALIDATION
+==============================================================*/
+
+SELECT
+    COUNT(*) AS date_count,
+    MIN(full_date) AS earliest_date,
+    MAX(full_date) AS latest_date
+FROM dw.dim_date;
+
+SELECT TOP 10 *
+FROM dw.dim_date
+ORDER BY full_date;
+GO

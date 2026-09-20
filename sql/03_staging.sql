@@ -96,7 +96,7 @@ SELECT
     END AS email,
 
     /* Clean and validate South African mobile numbers:
-       - Remove common formatting characters
+       - Remove spaces, dashes, brackets and +
        - Keep valid 10-digit local numbers
        - Convert 27xxxxxxxxx to 0xxxxxxxxx
        - Values that remain invalid become NULL
@@ -115,12 +115,10 @@ SELECT
         ELSE NULL
     END AS mobile_number,
 
-    /* Convert date fields from VARCHAR to DATE */
     TRY_CONVERT(DATE, TRIM(s.date_of_birth), 23) AS date_of_birth,
 
     s.gender,
 
-    /* Standardize province naming */
     CASE
         WHEN TRIM(s.province) = 'KwaZulu Natal'
             THEN 'KwaZulu-Natal'
@@ -136,7 +134,6 @@ SELECT
     s.product_type,
     s.account_status,
 
-    /* Convert monetary fields from VARCHAR to DECIMAL */
     TRY_CONVERT(
         DECIMAL(18,2),
         NULLIF(TRIM(s.credit_limit), '')
@@ -161,18 +158,20 @@ CROSS APPLY
         REPLACE(
             REPLACE(
                 REPLACE(
-                    REPLACE(TRIM(s.mobile_number), ' ', ''),
-                    '-', ''
+                    REPLACE(
+                        REPLACE(TRIM(s.mobile_number), ' ', ''),
+                        '-', ''
+                    ),
+                    '(', ''
                 ),
-                '(', ''
+                ')', ''
             ),
-            ')', ''
+            '+', ''
         ) AS mobile_number_clean
 ) AS cleaned
 
 WHERE s.event_type = 'Product Enrollment'
 
-/* Prevent the same client/account enrollment from being loaded again */
 AND NOT EXISTS
 (
     SELECT 1
@@ -188,17 +187,12 @@ GO
   3. VALIDATE PRODUCT ENROLLMENT LOAD
 ==============================================================*/
 
-/* Expected result: 2,000 rows */
 SELECT COUNT(*) AS product_enrollment_rows
 FROM staging.product_enrollment;
 
-
-/* Review sample cleaned records */
 SELECT TOP 20 *
 FROM staging.product_enrollment;
 
-
-/* Reconcile Product Enrollment records by product type */
 SELECT
     product_type,
     COUNT(*) AS total_accounts
@@ -210,22 +204,7 @@ GO
 
 
 /*==============================================================
-  VALIDATION RESULT
-
-  - Product Enrollment staging contains 2,000 records.
-  - Re-running the INSERT does not create duplicate records.
-  - Row count remains 2,000 after repeated execution.
-  - client_number + account_number is used to identify records
-    already loaded into staging.
-==============================================================*/
-
-
-/*==============================================================
   4. CRM INTERACTION STAGING TABLE
-
-  PURPOSE:
-  Store cleaned and typed CRM Interaction records separately
-  from the raw source data.
 ==============================================================*/
 
 IF OBJECT_ID('staging.crm_interaction', 'U') IS NULL
@@ -256,21 +235,13 @@ GO
 
   Load decision:
   - Existing staging records are preserved.
-  - The supplied source does not contain a unique interaction ID
-    or event timestamp.
-  - For this dataset, the following combination is used to
-    identify an interaction already loaded:
+  - Dataset-specific existing-record check:
 
-      client_number + event_date + channel + interaction_type
+    client_number + event_date + channel + interaction_type
 
   Limitation:
-  - In a production system, a unique interaction ID or a more
-    granular timestamp would be preferred.
-  - The current combination could not reliably distinguish two
-    identical interaction types made by the same client through
-    the same channel on the same date.
-  - Profiling of the supplied dataset supports this combination
-    for the current learning project.
+  - The source does not provide a unique interaction ID or
+    event timestamp.
 ==============================================================*/
 
 INSERT INTO staging.crm_interaction
@@ -295,23 +266,12 @@ SELECT
     s.first_name,
     s.last_name,
 
-    /* Clean email:
-       - Preserve missing values as NULL
-       - Remove spaces
-       - Convert populated emails to lowercase
-    */
     CASE
         WHEN s.email IS NULL OR TRIM(s.email) = ''
             THEN NULL
         ELSE LOWER(REPLACE(TRIM(s.email), ' ', ''))
     END AS email,
 
-    /* Clean and validate South African mobile numbers:
-       - Remove common formatting characters
-       - Keep valid 10-digit local numbers
-       - Convert 27xxxxxxxxx to 0xxxxxxxxx
-       - Values that remain invalid become NULL
-    */
     CASE
         WHEN cleaned.mobile_number_clean LIKE '0%'
              AND LEN(cleaned.mobile_number_clean) = 10
@@ -326,12 +286,10 @@ SELECT
         ELSE NULL
     END AS mobile_number,
 
-    /* Convert date fields from VARCHAR to DATE */
     TRY_CONVERT(DATE, TRIM(s.date_of_birth), 23) AS date_of_birth,
 
     s.gender,
 
-    /* Standardize province naming */
     CASE
         WHEN TRIM(s.province) = 'KwaZulu Natal'
             THEN 'KwaZulu-Natal'
@@ -346,7 +304,6 @@ SELECT
     s.channel,
     s.interaction_type,
 
-    /* Make missing resolution status explicit */
     CASE
         WHEN s.resolved_flag IS NULL
              OR TRIM(s.resolved_flag) = ''
@@ -356,25 +313,26 @@ SELECT
 
 FROM source.customer_activity_extract AS s
 
-/* Remove common mobile-number formatting before validation */
 CROSS APPLY
 (
     SELECT
         REPLACE(
             REPLACE(
                 REPLACE(
-                    REPLACE(TRIM(s.mobile_number), ' ', ''),
-                    '-', ''
+                    REPLACE(
+                        REPLACE(TRIM(s.mobile_number), ' ', ''),
+                        '-', ''
+                    ),
+                    '(', ''
                 ),
-                '(', ''
+                ')', ''
             ),
-            ')', ''
+            '+', ''
         ) AS mobile_number_clean
 ) AS cleaned
 
 WHERE s.event_type = 'CRM Interaction'
 
-/* Prevent previously loaded CRM interactions from being inserted again */
 AND NOT EXISTS
 (
     SELECT 1
@@ -392,17 +350,12 @@ GO
   6. VALIDATE CRM INTERACTION LOAD
 ==============================================================*/
 
-/* Expected result: 4,500 CRM Interaction records */
 SELECT COUNT(*) AS crm_interaction_rows
 FROM staging.crm_interaction;
 
-
-/* Review sample cleaned records */
 SELECT TOP 20 *
 FROM staging.crm_interaction;
 
-
-/* Check resolved status after transformation */
 SELECT
     resolved_flag,
     COUNT(*) AS total_interactions
@@ -410,8 +363,6 @@ FROM staging.crm_interaction
 GROUP BY resolved_flag
 ORDER BY resolved_flag;
 
-
-/* Reconcile interactions by channel */
 SELECT
     channel,
     COUNT(*) AS total_interactions
@@ -423,27 +374,7 @@ GO
 
 
 /*==============================================================
-  EXPECTED VALIDATION
-
-  Total CRM records:
-  - 4,500
-
-  resolved_flag:
-  - Y       = 3,410
-  - N       =   873
-  - Unknown =   217
-
-  Re-running this load should not increase the row count beyond
-  4,500 for the supplied dataset.
-==============================================================*/
-
-
-/*==============================================================
   7. TRANSACTION STAGING TABLE
-
-  PURPOSE:
-  Store cleaned and typed Transaction records separately from
-  the raw source data.
 ==============================================================*/
 
 IF OBJECT_ID('staging.[transaction]', 'U') IS NULL
@@ -476,32 +407,19 @@ GO
 
   Load decision:
   - Existing staging records are preserved.
-  - The source does not provide a unique transaction ID or
-    transaction timestamp.
-  - For the supplied dataset, the following combination is used
-    to identify a transaction already loaded:
+  - Dataset-specific existing-record check:
 
-      client_number
-      + account_number
-      + event_date
-      + transaction_type
-      + channel
-      + amount
-
-  Limitation:
-  - This is a dataset-specific solution.
-  - In a production system, a source-provided transaction ID
-    would be preferred.
-  - Two genuine transactions with exactly the same values could
-    not be distinguished using the available source fields.
+    client_number
+    + account_number
+    + event_date
+    + transaction_type
+    + channel
+    + amount
 
   Data-quality decisions:
   - Source amount signs are preserved.
   - Zero-value transactions are retained.
-  - Transactions without matching Product Enrollment accounts
-    are retained.
-  - Data-quality flags can be considered later during warehouse
-    modelling.
+  - Orphan transaction accounts are retained.
 ==============================================================*/
 
 INSERT INTO staging.[transaction]
@@ -528,23 +446,12 @@ SELECT
     s.first_name,
     s.last_name,
 
-    /* Clean email:
-       - Preserve missing values as NULL
-       - Remove spaces
-       - Convert populated emails to lowercase
-    */
     CASE
         WHEN s.email IS NULL OR TRIM(s.email) = ''
             THEN NULL
         ELSE LOWER(REPLACE(TRIM(s.email), ' ', ''))
     END AS email,
 
-    /* Clean and validate South African mobile numbers:
-       - Remove common formatting characters
-       - Keep valid 10-digit local numbers
-       - Convert 27xxxxxxxxx to 0xxxxxxxxx
-       - Values that remain invalid become NULL
-    */
     CASE
         WHEN cleaned.mobile_number_clean LIKE '0%'
              AND LEN(cleaned.mobile_number_clean) = 10
@@ -559,12 +466,10 @@ SELECT
         ELSE NULL
     END AS mobile_number,
 
-    /* Convert date fields from VARCHAR to DATE */
     TRY_CONVERT(DATE, TRIM(s.date_of_birth), 23) AS date_of_birth,
 
     s.gender,
 
-    /* Standardize province naming */
     CASE
         WHEN TRIM(s.province) = 'KwaZulu Natal'
             THEN 'KwaZulu-Natal'
@@ -581,9 +486,6 @@ SELECT
     s.transaction_type,
     s.channel,
 
-    /* Convert amount to DECIMAL.
-       Preserve the source sign and zero-value transactions.
-    */
     TRY_CONVERT(
         DECIMAL(18,2),
         NULLIF(TRIM(s.amount), '')
@@ -591,25 +493,26 @@ SELECT
 
 FROM source.customer_activity_extract AS s
 
-/* Remove common mobile-number formatting before validation */
 CROSS APPLY
 (
     SELECT
         REPLACE(
             REPLACE(
                 REPLACE(
-                    REPLACE(TRIM(s.mobile_number), ' ', ''),
-                    '-', ''
+                    REPLACE(
+                        REPLACE(TRIM(s.mobile_number), ' ', ''),
+                        '-', ''
+                    ),
+                    '(', ''
                 ),
-                '(', ''
+                ')', ''
             ),
-            ')', ''
+            '+', ''
         ) AS mobile_number_clean
 ) AS cleaned
 
 WHERE s.event_type = 'Transaction'
 
-/* Prevent previously loaded transactions from being inserted again */
 AND NOT EXISTS
 (
     SELECT 1
@@ -634,17 +537,12 @@ GO
   9. VALIDATE TRANSACTION LOAD
 ==============================================================*/
 
-/* Expected result: 15,000 Transaction records */
 SELECT COUNT(*) AS transaction_rows
 FROM staging.[transaction];
 
-
-/* Review sample cleaned records */
 SELECT TOP 20 *
 FROM staging.[transaction];
 
-
-/* Reconcile transactions by transaction type */
 SELECT
     transaction_type,
     COUNT(*) AS total_transactions
@@ -652,8 +550,6 @@ FROM staging.[transaction]
 GROUP BY transaction_type
 ORDER BY transaction_type;
 
-
-/* Check amount signs and zero-value transactions */
 SELECT
     transaction_type,
     COUNT(*) AS total_transactions,
@@ -665,27 +561,3 @@ GROUP BY transaction_type
 ORDER BY transaction_type;
 
 GO
-
-
-/*==============================================================
-  EXPECTED VALIDATION
-
-  Total Transaction records:
-  - 15,000
-
-  Transaction types:
-  - Debit Order   = 1,548
-  - Deposit       = 2,986
-  - EFT Payment   = 2,252
-  - Fee           =   755
-  - POS Purchase  = 3,740
-  - Refund        =   767
-  - Withdrawal    = 2,952
-
-  Data-quality checks:
-  - 26 zero-value transactions are intentionally retained.
-  - Source amount signs are preserved.
-  - Orphan transaction accounts are intentionally retained.
-  - Re-running this load should not increase the row count beyond
-    15,000 for the supplied dataset.
-==============================================================*/

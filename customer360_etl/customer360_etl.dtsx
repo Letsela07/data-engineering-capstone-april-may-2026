@@ -1,0 +1,2751 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/20/2026 11:25:54 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="REATLEHILE"
+  DTS:CreatorName="REATLEHILE\Nnete"
+  DTS:DTSID="{760538DD-EFF1-4708-9B46-D31EE508426B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="customer360_etl"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{D0112B2B-C774-4C1F-A228-DF9FB6448306}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[activity_extract_csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2CE5B78A-3317-4A01-828E-707CF4E900E8}"
+      DTS:ObjectName="activity_extract_csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="7177"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\PROJECTS\data-engineering-capstone-april-may-2026\data\raw\activity_extract.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="client_number"
+              DTS:DTSID="{0F6FF239-C2A4-49D2-953B-FCD2C5B002E6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="first_name"
+              DTS:DTSID="{103CED9F-73E9-4B46-BEE1-B863D32445BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_name"
+              DTS:DTSID="{F3248FC3-911A-4E4B-A889-82E5FEBFC69A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="email"
+              DTS:DTSID="{6DB00442-B416-4A1C-8101-9F73594A80F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="mobile_number"
+              DTS:DTSID="{96F92FBF-9800-4A07-92EA-3C26353A9D50}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date_of_birth"
+              DTS:DTSID="{9DCC7599-5057-4B9B-BD5D-E1BE6D0700F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gender"
+              DTS:DTSID="{3FC73BDC-3184-4B17-BCF0-C1C8C1B99C65}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="province"
+              DTS:DTSID="{260322D6-9A0A-4267-AA8F-B5CA40EE8A89}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="city"
+              DTS:DTSID="{7F8E637B-C146-4798-A9F3-C8F98C681B1C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="signup_date"
+              DTS:DTSID="{11CFDB07-99A7-4DE6-8E21-9B6BAFFF10E2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_type"
+              DTS:DTSID="{5A1F0D26-53C8-4A2C-9046-4907888006B5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_date"
+              DTS:DTSID="{1F2401D6-3114-4E25-B75A-4C27D795DA54}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="account_number"
+              DTS:DTSID="{7673C230-7FCC-4D76-A512-598B23087C7E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="product_type"
+              DTS:DTSID="{55824585-4302-4AD6-971A-BA188E9D6E80}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="account_status"
+              DTS:DTSID="{241A9B36-657A-47E4-961F-FB641EECD243}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="credit_limit"
+              DTS:DTSID="{A73B0EF3-65C8-40EE-B2A6-B567A99EF543}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="loan_amount"
+              DTS:DTSID="{5F1CD237-116F-4110-A9CC-64BC93C0DDFA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="account_balance"
+              DTS:DTSID="{CDCA1BAE-E87A-4B30-BC76-9683F36FF0BF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="channel"
+              DTS:DTSID="{6A26A7CC-CA99-48EC-A85F-7CF392548FBD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="interaction_type"
+              DTS:DTSID="{64FE02B1-5199-4667-B4B0-20071EBDA4DD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="resolved_flag"
+              DTS:DTSID="{03A026E2-6EB1-42B7-BEE3-AEC0EC2B931E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="transaction_type"
+              DTS:DTSID="{B002FCE8-6029-443D-96E4-55E8A36D7997}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="amount"
+              DTS:DTSID="{A078EFFD-93DC-41B2-AD0A-A912D24BC66D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[REATLEHILE.Customer360_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B5F37847-7DEF-4C28-995E-626469D990CB}"
+      DTS:ObjectName="REATLEHILE.Customer360_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=REATLEHILE;Initial Catalog=Customer360_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-customer360_etl-{B5F37847-7DEF-4C28-995E-626469D990CB}REATLEHILE.Customer360_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\01_truncate_source"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Clears the raw landing table before reloading the source CSV."
+      DTS:DTSID="{3A77A18A-40CD-48F7-9F56-7B4E9B364121}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="01_truncate_source"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B5F37847-7DEF-4C28-995E-626469D990CB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE source.customer_activity_extract;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\02_load_raw_source"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7645C74A-9321-4BA9-9455-F8BEA4C27639}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="02_load_raw_source"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\02_load_raw_source\activity_extract_csv_source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="7177"
+              name="activity_extract_csv_source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\02_load_raw_source\activity_extract_csv_source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[activity_extract_csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[activity_extract_csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[client_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[client_number]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[client_number]"
+                      name="client_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[first_name]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[last_name]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[email]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[mobile_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[mobile_number]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[mobile_number]"
+                      name="mobile_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[date_of_birth]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[date_of_birth]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[date_of_birth]"
+                      name="date_of_birth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[gender]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[province]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[province]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[province]"
+                      name="province"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[signup_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[signup_date]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[signup_date]"
+                      name="signup_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[event_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[event_type]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[event_type]"
+                      name="event_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[event_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[event_date]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[event_date]"
+                      name="event_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[account_number]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_number]"
+                      name="account_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[product_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[product_type]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[product_type]"
+                      name="product_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[account_status]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_status]"
+                      name="account_status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[credit_limit]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[credit_limit]"
+                      name="credit_limit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[loan_amount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[loan_amount]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[loan_amount]"
+                      name="loan_amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_balance]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[account_balance]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_balance]"
+                      name="account_balance"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[channel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[channel]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[channel]"
+                      name="channel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[interaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[interaction_type]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[interaction_type]"
+                      name="interaction_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[resolved_flag]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[resolved_flag]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[resolved_flag]"
+                      name="resolved_flag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[transaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[transaction_type]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[transaction_type]"
+                      name="transaction_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[amount]"
+                      length="50"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[amount]"
+                      name="amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[client_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="client_number" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[mobile_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mobile_number" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[date_of_birth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="date_of_birth" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="province" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[signup_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="signup_date" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[event_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="event_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[event_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="event_date" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="account_number" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[product_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="product_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[account_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="account_status" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[loan_amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="loan_amount" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[account_balance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="account_balance" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="channel" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[interaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="interaction_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[resolved_flag]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="resolved_flag" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[transaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="transaction_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].ExternalColumns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="amount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\02_load_raw_source\source_customer_activity_extract"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="source_customer_activity_extract"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[source].[customer_activity_extract]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\02_load_raw_source\source_customer_activity_extract.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[REATLEHILE.Customer360_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[REATLEHILE.Customer360_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[client_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="client_number"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[client_number]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[client_number]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[last_name]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[mobile_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="mobile_number"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[mobile_number]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[mobile_number]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[date_of_birth]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date_of_birth"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[date_of_birth]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[date_of_birth]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[province]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="province"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[province]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[province]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[signup_date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="signup_date"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[signup_date]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[signup_date]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[event_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="event_type"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[event_type]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[event_date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="event_date"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[event_date]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[event_date]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[account_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="account_number"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[account_number]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_number]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[product_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_type"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[product_type]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[product_type]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[account_status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="account_status"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[account_status]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_status]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[credit_limit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="credit_limit"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[credit_limit]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[credit_limit]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[loan_amount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="loan_amount"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[loan_amount]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[loan_amount]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[account_balance]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="account_balance"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[account_balance]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[account_balance]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[channel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="channel"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[channel]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[channel]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[interaction_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="interaction_type"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[interaction_type]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[interaction_type]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[resolved_flag]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="resolved_flag"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[resolved_flag]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[resolved_flag]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[transaction_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="transaction_type"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[transaction_type]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[transaction_type]" />
+                    <inputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="amount"
+                      externalMetadataColumnId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output].Columns[amount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[client_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="client_number" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[mobile_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mobile_number" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[date_of_birth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="date_of_birth" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="province" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[signup_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="signup_date" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="event_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[event_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="event_date" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="account_number" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[product_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="product_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[account_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="account_status" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[loan_amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="loan_amount" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[account_balance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="account_balance" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="channel" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[interaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="interaction_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[resolved_flag]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="resolved_flag" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[transaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="transaction_type" />
+                    <externalMetadataColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="amount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\02_load_raw_source\source_customer_activity_extract.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\02_load_raw_source\source_customer_activity_extract.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\02_load_raw_source\source_customer_activity_extract.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\02_load_raw_source\source_customer_activity_extract.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\02_load_raw_source.Paths[Flat File Source Output]"
+              endId="Package\02_load_raw_source\source_customer_activity_extract.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\02_load_raw_source\activity_extract_csv_source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\03_stage_events"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{10AB4C66-0020-4736-83C6-106501F342A4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="03_stage_events"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\03_stage_events\source_customer_activity"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="source_customer_activity"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[source].[customer_activity_extract]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\03_stage_events\source_customer_activity.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[REATLEHILE.Customer360_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[REATLEHILE.Customer360_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[client_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[client_number]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[client_number]"
+                      name="client_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      length="200"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[mobile_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[mobile_number]"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[mobile_number]"
+                      name="mobile_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[date_of_birth]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[date_of_birth]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[date_of_birth]"
+                      name="date_of_birth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      length="10"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[province]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[province]"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[province]"
+                      name="province"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[signup_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[signup_date]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[signup_date]"
+                      name="signup_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[event_type]"
+                      length="30"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_type]"
+                      name="event_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[event_date]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_date]"
+                      name="event_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[account_number]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[account_number]"
+                      name="account_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[product_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[product_type]"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[product_type]"
+                      name="product_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[account_status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[account_status]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[account_status]"
+                      name="account_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      name="credit_limit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[loan_amount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[loan_amount]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[loan_amount]"
+                      name="loan_amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[account_balance]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[account_balance]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[account_balance]"
+                      name="account_balance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[channel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[channel]"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[channel]"
+                      name="channel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[interaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[interaction_type]"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[interaction_type]"
+                      name="interaction_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[resolved_flag]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[resolved_flag]"
+                      length="5"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[resolved_flag]"
+                      name="resolved_flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[transaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[transaction_type]"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[transaction_type]"
+                      name="transaction_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[amount]"
+                      name="amount"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[client_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="client_number" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[mobile_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mobile_number" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[date_of_birth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="date_of_birth" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="province" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[signup_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="signup_date" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[event_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="event_type" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[event_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="event_date" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="account_number" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[product_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="product_type" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[account_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="account_status" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[loan_amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="loan_amount" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[account_balance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="account_balance" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="channel" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[interaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="interaction_type" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[resolved_flag]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="resolved_flag" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[transaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="transaction_type" />
+                    <externalMetadataColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="amount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[client_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[client_number]"
+                      name="client_number" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[email]"
+                      name="email" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[mobile_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[mobile_number]"
+                      name="mobile_number" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[date_of_birth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[date_of_birth]"
+                      name="date_of_birth" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[province]"
+                      name="province" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[signup_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[signup_date]"
+                      name="signup_date" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[event_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[event_type]"
+                      name="event_type" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[event_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[event_date]"
+                      name="event_date" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[account_number]"
+                      name="account_number" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[product_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[product_type]"
+                      name="product_type" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[account_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[account_status]"
+                      name="account_status" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
+                      name="credit_limit" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[loan_amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[loan_amount]"
+                      name="loan_amount" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[account_balance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[account_balance]"
+                      name="account_balance" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[channel]"
+                      name="channel" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[interaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[interaction_type]"
+                      name="interaction_type" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[resolved_flag]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[resolved_flag]"
+                      name="resolved_flag" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[transaction_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[transaction_type]"
+                      name="transaction_type" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[amount]"
+                      name="amount" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\03_stage_events\split_by_event_type"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="split_by_event_type"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input].Columns[event_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="event_type"
+                      lineageId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\03_stage_events\split_by_event_type.Outputs[product_enrollment]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="product_enrollment"
+                  synchronousInputId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_type]} == "Product Enrollment"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">event_type == "Product Enrollment"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\03_stage_events\split_by_event_type.Outputs[crm_interaction]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="crm_interaction"
+                  synchronousInputId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_type]} == "CRM Interaction"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">event_type == "CRM Interaction"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\03_stage_events\split_by_event_type.Outputs[transaction]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="transaction"
+                  synchronousInputId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output].Columns[event_type]} == "Transaction"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">event_type == "Transaction"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\03_stage_events\split_by_event_type.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\03_stage_events\split_by_event_type.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\03_stage_events\split_by_event_type.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\03_stage_events\split_by_event_type.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\03_stage_events\split_by_event_type.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\03_stage_events\split_by_event_type.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\03_stage_events.Paths[OLE DB Source Output]"
+              endId="Package\03_stage_events\split_by_event_type.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\03_stage_events\source_customer_activity.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\04_load_staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E8A6BE06-3BE6-4502-AAF8-7E534283504E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="04_load_staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B5F37847-7DEF-4C28-995E-626469D990CB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="EXEC dbo.usp_load_staging;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\05_create_dw_tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9710E972-F634-4CFA-A9DA-AFBF872C2000}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="05_create_dw_tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B5F37847-7DEF-4C28-995E-626469D990CB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="USE Customer360_DW;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\06_load_dimensions"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8146BC49-A831-4970-B74F-098C2F228EB3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="06_load_dimensions"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B5F37847-7DEF-4C28-995E-626469D990CB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="EXEC dbo.usp_load_dimensions;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\07_load_facts"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CFBA1182-D1BE-4398-8EB4-9720C43FE2B2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="07_load_facts"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B5F37847-7DEF-4C28-995E-626469D990CB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="EXEC dbo.usp_load_facts;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FE3D5B54-BD85-4785-9150-DD968227827B}"
+      DTS:From="Package\01_truncate_source"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\02_load_raw_source" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5B120DA7-66C3-4637-97C1-025454EA37BC}"
+      DTS:From="Package\02_load_raw_source"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\03_stage_events" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{8B342ECD-3630-4F53-AECF-F1EBE87B9DEE}"
+      DTS:From="Package\03_stage_events"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\04_load_staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{683EDD98-9486-45A6-BC4A-80D9C62A5475}"
+      DTS:From="Package\04_load_staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\05_create_dw_tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{AEA872E3-FAED-4DA5-B028-87C323EB9DDA}"
+      DTS:From="Package\05_create_dw_tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\06_load_dimensions" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7D7CF80-E5EB-4C04-B985-60ED2372DE82}"
+      DTS:From="Package\06_load_dimensions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\07_load_facts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\01_truncate_source"
+          TopLeft="59.9999967217447,46.7999996745586" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\02_load_raw_source"
+          TopLeft="109.999993989865,134.333332399196" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\03_stage_events"
+          TopLeft="188.333323043254,220.133331802554" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\04_load_staging"
+          TopLeft="264.166652233237,293.799997956951" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\05_create_dw_tables"
+          TopLeft="434.999976232649,358.79999750495" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\06_load_dimensions"
+          TopLeft="562.499969266356,426.33333080815" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\07_load_facts"
+          TopLeft="644.166631470953,502.133330753909" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="145.199996721745,88.3999996745586">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.3999972681206,45.9333327246375"
+              Start="0,0"
+              End="52.3999972681206,38.4333327246375">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.9666663623187" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.9666663623187"
+                    Point2="0,22.9666663623187"
+                    Point3="4,22.9666663623187" />
+                  <mssgle:LineSegment
+                    End="48.3999972681206,22.9666663623187" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.3999972681206,22.9666663623187"
+                    Point2="52.3999972681206,22.9666663623187"
+                    Point3="52.3999972681206,26.9666663623187" />
+                  <mssgle:LineSegment
+                    End="52.3999972681206,38.4333327246375" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="197.599993989865,175.933332399196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.5333290533889,44.1999994033576"
+              Start="0,0"
+              End="69.5333290533889,36.6999994033576">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0999997016788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0999997016788"
+                    Point2="0,22.0999997016788"
+                    Point3="4,22.0999997016788" />
+                  <mssgle:LineSegment
+                    End="65.5333290533889,22.0999997016788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.5333290533889,22.0999997016788"
+                    Point2="69.5333290533889,22.0999997016788"
+                    Point3="69.5333290533889,26.0999997016788" />
+                  <mssgle:LineSegment
+                    End="69.5333290533889,36.6999994033576" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="267.133323043254,261.733331802554">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.233329189983,32.066666154397"
+              Start="0,0"
+              End="74.233329189983,24.566666154397">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.0333330771985" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.0333330771985"
+                    Point2="0,16.0333330771985"
+                    Point3="4,16.0333330771985" />
+                  <mssgle:LineSegment
+                    End="70.233329189983,16.0333330771985" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.233329189983,16.0333330771985"
+                    Point2="74.233329189983,16.0333330771985"
+                    Point3="74.233329189983,20.0333330771985" />
+                  <mssgle:LineSegment
+                    End="74.233329189983,24.566666154397" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="341.366652233237,335.399997956951">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.033323999412,23.399999547999"
+              Start="0,0"
+              End="182.033323999412,15.899999547999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.69999977399948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.69999977399948"
+                    Point2="0,11.6999997739995"
+                    Point3="4,11.6999997739995" />
+                  <mssgle:LineSegment
+                    End="178.033323999412,11.6999997739995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178.033323999412,11.6999997739995"
+                    Point2="182.033323999412,11.6999997739995"
+                    Point3="182.033323999412,15.6999997739995" />
+                  <mssgle:LineSegment
+                    End="182.033323999412,15.899999547999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="523.399976232649,400.39999750495">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="121.499993033707,25.9333333031998"
+              Start="0,0"
+              End="121.499993033707,18.4333333031998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.96666665159989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.96666665159989"
+                    Point2="0,12.9666666515999"
+                    Point3="4,12.9666666515999" />
+                  <mssgle:LineSegment
+                    End="117.499993033707,12.9666666515999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="117.499993033707,12.9666666515999"
+                    Point2="121.499993033707,12.9666666515999"
+                    Point3="121.499993033707,16.9666666515999" />
+                  <mssgle:LineSegment
+                    End="121.499993033707,18.4333333031998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="644.899969266356,467.93333080815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.6666622045971,34.1999999457597"
+              Start="0,0"
+              End="81.6666622045971,26.6999999457597">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0999999728798" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0999999728798"
+                    Point2="0,17.0999999728798"
+                    Point3="4,17.0999999728798" />
+                  <mssgle:LineSegment
+                    End="77.6666622045971,17.0999999728798" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.6666622045971,17.0999999728798"
+                    Point2="81.6666622045971,17.0999999728798"
+                    Point3="81.6666622045971,21.0999999728798" />
+                  <mssgle:LineSegment
+                    End="81.6666622045971,26.6999999457597" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\02_load_raw_source">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="232.8,41.6"
+          Id="Package\02_load_raw_source\source_customer_activity_extract"
+          TopLeft="163.333324409194,160.333332218395" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\02_load_raw_source\activity_extract_csv_source"
+          TopLeft="82.4999954923989,71.066666172478" />
+        <EdgeLayout
+          Id="Package\02_load_raw_source.Paths[Flat File Source Output]"
+          TopLeft="185.299995492399,112.666666172478">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.4333289167949,47.6666660459174"
+              Start="0,0"
+              End="94.4333289167949,40.1666660459174">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8333330229587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.8333330229587"
+                    Point2="0,23.8333330229587"
+                    Point3="4,23.8333330229587" />
+                  <mssgle:LineSegment
+                    End="90.4333289167949,23.8333330229587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90.4333289167949,23.8333330229587"
+                    Point2="94.4333289167949,23.8333330229587"
+                    Point3="94.4333289167949,27.8333330229587" />
+                  <mssgle:LineSegment
+                    End="94.4333289167949,40.1666660459174" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\02_load_raw_source\source_customer_activity_extract">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\03_stage_events">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\03_stage_events\split_by_event_type"
+          TopLeft="241.999996393919,221.999996691942" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\03_stage_events\source_customer_activity"
+          TopLeft="163.99999755621,91.9999986290932" />
+        <EdgeLayout
+          Id="Package\03_stage_events.Paths[OLE DB Source Output]"
+          TopLeft="261.99999755621,133.599998629093">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.1999988377094,88.3999980628491"
+              Start="0,0"
+              End="65.1999988377094,80.8999980628491">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1999990314245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.1999990314245"
+                    Point2="0,44.1999990314245"
+                    Point3="4,44.1999990314245" />
+                  <mssgle:LineSegment
+                    End="61.1999988377094,44.1999990314245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.1999988377094,44.1999990314245"
+                    Point2="65.1999988377094,44.1999990314245"
+                    Point3="65.1999988377094,48.1999990314245" />
+                  <mssgle:LineSegment
+                    End="65.1999988377094,80.8999980628491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\03_stage_events\source_customer_activity">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
