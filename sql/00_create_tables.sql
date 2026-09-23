@@ -100,3 +100,85 @@ BEGIN
     );
 
 END;
+
+
+GO
+
+
+/* ------------------------------------------------------------
+   4. CREATE STAGING TABLES
+   Create empty staging tables required by the SSIS pipeline.
+   ------------------------------------------------------------ */
+
+IF OBJECT_ID('staging.product_enrollment', 'U') IS NULL
+BEGIN
+    CREATE TABLE staging.product_enrollment
+    (
+        client_number      VARCHAR(20),
+        first_name         VARCHAR(100),
+        last_name          VARCHAR(100),
+        email              VARCHAR(255),
+        mobile_number      VARCHAR(20),
+        date_of_birth      DATE,
+        gender             VARCHAR(10),
+        province           VARCHAR(50),
+        city               VARCHAR(100),
+        signup_date        DATE,
+        event_date         DATE,
+        account_number     VARCHAR(20),
+        product_type       VARCHAR(50),
+        account_status     VARCHAR(20),
+        credit_limit       DECIMAL(18,2),
+        loan_amount        DECIMAL(18,2),
+        account_balance    DECIMAL(18,2)
+    );
+END;
+GO
+
+
+IF OBJECT_ID('staging.crm_interaction', 'U') IS NULL
+BEGIN
+    CREATE TABLE staging.crm_interaction
+    (
+        client_number      VARCHAR(20),
+        first_name         VARCHAR(100),
+        last_name          VARCHAR(100),
+        email              VARCHAR(255),
+        mobile_number      VARCHAR(20),
+        date_of_birth      DATE,
+        gender             VARCHAR(10),
+        province           VARCHAR(50),
+        city               VARCHAR(100),
+        signup_date        DATE,
+        event_date         DATE,
+        channel            VARCHAR(50),
+        interaction_type   VARCHAR(50),
+        resolved_flag      VARCHAR(10)
+    );
+END;
+GO
+
+
+IF OBJECT_ID('staging.[transaction]', 'U') IS NULL
+BEGIN
+    CREATE TABLE staging.[transaction]
+    (
+        client_number      VARCHAR(20),
+        first_name         VARCHAR(100),
+        last_name          VARCHAR(100),
+        email              VARCHAR(255),
+        mobile_number      VARCHAR(20),
+        date_of_birth      DATE,
+        gender             VARCHAR(10),
+        province           VARCHAR(50),
+        city               VARCHAR(100),
+        signup_date        DATE,
+        event_date         DATE,
+        account_number     VARCHAR(20),
+        product_type       VARCHAR(50),
+        transaction_type   VARCHAR(50),
+        channel            VARCHAR(50),
+        amount             DECIMAL(18,2)
+    );
+END;
+GO

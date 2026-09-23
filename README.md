@@ -1,5 +1,189 @@
 # Customer 360 Intern Project
 
+## Lebohang Letsela - Customer360 Implementation
+
+This repository contains my implementation of the Customer360 Data Warehouse capstone using SQL Server and SQL Server Integration Services (SSIS).
+
+The solution transforms a single raw banking activity extract containing 21,500 events into a structured dimensional warehouse supporting customer, product, transaction and CRM analysis.
+
+### Solution Architecture
+
+![Customer360 Pipeline](docs/architecture/customer360_pipeline.png)
+
+The pipeline follows six main stages:
+
+`CSV Source -> Raw Landing -> SSIS / ETL -> Staging -> Dimensional Warehouse -> Business Analysis`
+
+The raw extract is first loaded into `source.customer_activity_extract`. SSIS then orchestrates the staging and warehouse loads, with stored procedures performing data cleaning, standardisation and dimensional loading.
+
+### Dimensional Model
+
+The final Customer360 warehouse uses a fact constellation with shared dimensions.
+
+**Dimensions**
+
+- `dw.dim_client`
+- `dw.dim_date`
+- `dw.dim_account`
+- `dw.dim_product`
+
+**Facts**
+
+- `dw.fact_transaction`
+- `dw.fact_product_enrollment`
+- `dw.fact_interaction`
+
+The warehouse uses surrogate keys for dimensional relationships. Client and account attributes use an SCD Type 1 approach.
+
+### Data Quality
+
+Data profiling identified several source data quality conditions, including inconsistent mobile-number formatting, missing contact information, inconsistent province naming, missing CRM resolution values, orphan transaction accounts and zero-value transactions.
+
+Valid unusual records were preserved rather than automatically deleted. Where appropriate, values were standardised, converted to NULL or Unknown, or represented using data-quality flags.
+
+Full details are available in:
+
+`docs/data_quality.md`
+
+### ETL Implementation
+
+The SSIS Control Flow executes the pipeline in the following sequence:
+
+1. `01_truncate_source`
+2. `02_load_raw_source`
+3. `03_stage_events`
+4. `04_load_staging`
+5. `05_create_dw_tables`
+6. `06_load_dimensions`
+7. `07_load_facts`
+
+Stored procedures used by the pipeline include:
+
+- `dbo.usp_load_staging`
+- `dbo.usp_load_dimensions`
+- `dbo.usp_load_facts`
+
+Detailed SSIS documentation and execution screenshots are available in:
+
+`docs/ssis_pipeline.md`
+
+### Validation Results
+
+A successful pipeline run produces the following expected row counts:
+
+| Table | Expected Rows |
+|---|---:|
+| `source.customer_activity_extract` | 21,500 |
+| `staging.product_enrollment` | 2,000 |
+| `staging.crm_interaction` | 4,500 |
+| `staging.transaction` | 15,000 |
+| `dw.dim_client` | 1,484 |
+| `dw.dim_product` | 3 |
+| `dw.dim_account` | 2,010 |
+| `dw.dim_date` | 1,490 |
+| `dw.fact_product_enrollment` | 2,000 |
+| `dw.fact_interaction` | 4,500 |
+| `dw.fact_transaction` | 15,000 |
+
+### Business Analysis
+
+The final warehouse is used to answer all 20 Customer360 business questions covering:
+
+- Customer demographics and growth
+- Product holdings and cross-sell opportunities
+- Transaction behaviour
+- CRM interactions and resolution rates
+- Customer activity and lifecycle segmentation
+- Customer value tiers
+- Retention
+- Unusual transaction patterns
+
+The completed analysis is available in:
+
+`sql/08_business_questions.sql`
+
+### How to Run the Project
+
+#### Prerequisites
+
+Install:
+
+- SQL Server
+- SQL Server Management Studio (SSMS)
+- Visual Studio or SSDT with SQL Server Integration Services
+
+#### 1. Clone the Repository
+
+Clone the repository and check out the project branch.
+
+#### 2. Create the Database Structures
+
+Run:
+
+`sql/00_create_tables.sql`
+
+This creates the `Customer360_DW` database, required schemas, raw landing table and staging tables.
+
+#### 3. Configure SSIS
+
+Open the SSIS project located in:
+
+`customer360_etl/`
+
+Update the SQL Server connection manager so that it points to your local `Customer360_DW` database.
+
+Update the Flat File Connection Manager so that it points to:
+
+`data/raw/activity_extract.csv`
+
+on your local cloned repository.
+
+Connection paths are machine-specific and therefore must be configured for the environment where the package is executed.
+
+#### 4. Create the Stored Procedures
+
+Run:
+
+`sql/07_stored_procedures.sql`
+
+The script uses `CREATE OR ALTER PROCEDURE`, allowing the procedures to be created on a new database or updated when they already exist.
+
+#### 5. Run the SSIS Package
+
+Execute the main Customer360 SSIS package.
+
+The package will:
+
+- Clear and reload the raw landing table
+- Load and clean the staging layer
+- Create the dimensional warehouse structures
+- Load dimensions before dependent facts
+- Populate the three fact tables
+
+#### 6. Validate the Load
+
+Compare the resulting table counts with the expected counts shown in the Validation Results section above.
+
+#### 7. Run the Business Analysis
+
+Execute:
+
+`sql/08_business_questions.sql`
+
+The queries run against the dimensional warehouse rather than the raw or staging layers.
+
+### Project Documentation
+
+Additional documentation is available under `docs/`:
+
+- Data quality findings: `docs/data_quality.md`
+- SSIS pipeline documentation: `docs/ssis_pipeline.md`
+- Pipeline architecture: `docs/architecture/customer360_pipeline.drawio`
+- Pipeline architecture export: `docs/architecture/customer360_pipeline.png`
+- Dimensional model ERDs: `docs/erd/`
+
+---
+
 A self-contained data engineering capstone for the April-May 2026 intern
 intake: build a star-schema data warehouse from a single raw banking
 extract, using SSIS and SQL Server.

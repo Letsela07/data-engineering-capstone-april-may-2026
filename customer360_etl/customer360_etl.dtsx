@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="customer360_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{D0112B2B-C774-4C1F-A228-DF9FB6448306}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{FDC2D737-3862-4580-B9D7-F58D403FE8D1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2416,9 +2416,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="52.3999972681206,45.9333327246375"
+              EndConnector="52.3999972681203,45.9333327246374"
               Start="0,0"
-              End="52.3999972681206,38.4333327246375">
+              End="52.3999972681203,38.4333327246374">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2429,13 +2429,13 @@
                     Point2="0,22.9666663623187"
                     Point3="4,22.9666663623187" />
                   <mssgle:LineSegment
-                    End="48.3999972681206,22.9666663623187" />
+                    End="48.3999972681203,22.9666663623187" />
                   <mssgle:CubicBezierSegment
-                    Point1="48.3999972681206,22.9666663623187"
-                    Point2="52.3999972681206,22.9666663623187"
-                    Point3="52.3999972681206,26.9666663623187" />
+                    Point1="48.3999972681203,22.9666663623187"
+                    Point2="52.3999972681203,22.9666663623187"
+                    Point3="52.3999972681203,26.9666663623187" />
                   <mssgle:LineSegment
-                    End="52.3999972681206,38.4333327246375" />
+                    End="52.3999972681203,38.4333327246374" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2450,26 +2450,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69.5333290533889,44.1999994033576"
+              EndConnector="69.533329053389,44.199999403358"
               Start="0,0"
-              End="69.5333290533889,36.6999994033576">
+              End="69.533329053389,36.699999403358">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.0999997016788" />
+                    End="0,18.099999701679" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.0999997016788"
-                    Point2="0,22.0999997016788"
-                    Point3="4,22.0999997016788" />
+                    Point1="0,18.099999701679"
+                    Point2="0,22.099999701679"
+                    Point3="4,22.099999701679" />
                   <mssgle:LineSegment
-                    End="65.5333290533889,22.0999997016788" />
+                    End="65.533329053389,22.099999701679" />
                   <mssgle:CubicBezierSegment
-                    Point1="65.5333290533889,22.0999997016788"
-                    Point2="69.5333290533889,22.0999997016788"
-                    Point3="69.5333290533889,26.0999997016788" />
+                    Point1="65.533329053389,22.099999701679"
+                    Point2="69.533329053389,22.099999701679"
+                    Point3="69.533329053389,26.099999701679" />
                   <mssgle:LineSegment
-                    End="69.5333290533889,36.6999994033576" />
+                    End="69.533329053389,36.699999403358" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2621,7 +2621,7 @@
     design-time-name="Package\02_load_raw_source">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="232.8,41.6"
           Id="Package\02_load_raw_source\source_customer_activity_extract"
@@ -2661,9 +2661,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

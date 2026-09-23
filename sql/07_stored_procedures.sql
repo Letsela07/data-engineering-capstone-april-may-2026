@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER   PROCEDURE [dbo].[usp_load_staging]
+CREATE OR ALTER PROCEDURE  [dbo].[usp_load_staging]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -361,7 +361,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER   PROCEDURE [dbo].[usp_load_dimensions]
+CREATE OR ALTER PROCEDURE  [dbo].[usp_load_dimensions]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -691,7 +691,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER   PROCEDURE [dbo].[usp_load_facts]
+CREATE OR ALTER PROCEDURE  [dbo].[usp_load_facts]
 AS
 BEGIN
     SET NOCOUNT ON;
